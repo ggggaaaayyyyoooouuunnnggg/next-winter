@@ -3,15 +3,19 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import Layout from '../components/Layout'
+import data from '../utils/data'
+import ProductItem from '../components/ProductItem'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <Layout title="home">
-      <h1 className="text-3xl text-blue-500">next ecommerce</h1>
-      <p>Author: Gayoung Yoo</p>
-      <p>웹서버보안프로그래밍 겨울학기</p>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        {data.products.map((product) => (
+          <ProductItem product={product} key={product.slug}></ProductItem>
+        ))}
+      </div>
     </Layout>
   )
 }
